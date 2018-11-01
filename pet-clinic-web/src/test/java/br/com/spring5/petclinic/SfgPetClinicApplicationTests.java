@@ -1,4 +1,4 @@
-package br.com.spring5;
+package br.com.spring5.petclinic;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
