@@ -10,14 +10,15 @@ buildscript {
 	}
 }
 
-group = 'br.com'
-version = '0.0.1-SNAPSHOT'
+allprojects {
+	group = 'br.com'
+	version = '0.0.1-SNAPSHOT'
+}
 
 
 subprojects {
 	apply plugin: 'java'
 	apply plugin: 'io.spring.dependency-management'
-	apply plugin: 'org.springframework.boot'
 	repositories {
 		mavenCentral()
 	}
