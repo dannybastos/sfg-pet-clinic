@@ -7,8 +7,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import br.com.spring5.petclinic.config.PetClinicDataConfig;
+
 @RunWith(SpringRunner.class)
-@ContextConfiguration("classpath:context-test.xml")
+@ContextConfiguration(classes=PetClinicDataConfig.class)
 public class SfgPetClinicApplicationTests {
 
 	private Logger log = LoggerFactory.getLogger(getClass());
