@@ -1,7 +1,7 @@
 
 buildscript {
     ext {
-        springDataVersion='2.1.0.RELEASE'
+        springDataVersion='2.1.2.RELEASE'
         lombokVersion='1.18.2'
         sfl4jVersion='1.7.25'
         springVersion='5.1.2.RELEASE'
