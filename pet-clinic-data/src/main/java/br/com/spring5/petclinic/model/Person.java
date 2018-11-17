@@ -1,9 +1,11 @@
 package br.com.spring5.petclinic.model;
 
+import java.io.Serializable;
+
 /**
  * Created by dannybastos on 01/11/18.
  */
-public abstract class Person {
+public abstract class Person  {
 
 	private Long id;
     private String firstName;

@@ -7,6 +7,16 @@ import java.time.LocalDate;
  */
 public class Pet {
 
+    public Pet() {
+    }
+
+    public Pet(String name, LocalDate birthDate, PetType type, Owner owner) {
+        this.name = name;
+        this.birthDate = birthDate;
+        this.type = type;
+        this.owner = owner;
+    }
+
     private String name;
     private LocalDate birthDate;
     private PetType type;
