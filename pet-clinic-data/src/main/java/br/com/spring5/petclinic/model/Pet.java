@@ -4,18 +4,18 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Set;
 
 /**
  * Created by dannybastos on 01/11/18.
  */
 @Entity
-@TableGenerator(name="TAB_SEQ", initialValue=1, allocationSize=1)
 public class Pet implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator="TAB_SEQ")
-    private Long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	
     @Column(name="name", length = 100)
     private String name;
@@ -29,6 +29,9 @@ public class Pet implements Serializable{
     @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     private Owner owner;
 
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="pet")
+    private Set<Visit> visits;
+    
     public Pet() {
     }
 
@@ -70,4 +73,12 @@ public class Pet implements Serializable{
     public void setOwner(Owner owner) {
         this.owner = owner;
     }
+
+	public Set<Visit> getVisits() {
+		return visits;
+	}
+
+	public void setVisits(Set<Visit> visits) {
+		this.visits = visits;
+	}
 }

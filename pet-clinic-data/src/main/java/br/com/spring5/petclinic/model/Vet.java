@@ -1,8 +1,12 @@
 package br.com.spring5.petclinic.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 /**
  * Created by dannybastos on 01/11/18.
@@ -11,23 +15,26 @@ import javax.persistence.ManyToOne;
 public class Vet extends Person {
 	private static final long serialVersionUID = 88287483914776409L;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-    private Speciality speciality;
+	@ManyToMany(cascade=CascadeType.ALL)
+	@JoinTable(name="VET_SPECIALITY")
+    private Set<Speciality> specialities;
 
     public Vet() {
+    	this.specialities = new HashSet<>();
     }
 
-    public Vet(String firstName, String lastName, Speciality speciality) {
+    public Vet(String firstName, String lastName) {
+    	this();
         this.setFirstName(firstName);
         this.setLastName(lastName);
-        this.speciality = speciality;
     }
 
-    public Speciality getSpeciality() {
-        return speciality;
-    }
+	public Set<Speciality> getSpecialities() {
+		return specialities;
+	}
 
-    public void setSpeciality(Speciality speciality) {
-        this.speciality = speciality;
-    }
+	public void setSpecialities(Set<Speciality> specialities) {
+		this.specialities = specialities;
+	}
+
 }

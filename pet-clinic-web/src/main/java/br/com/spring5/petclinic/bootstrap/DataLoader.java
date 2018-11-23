@@ -61,10 +61,13 @@ public class DataLoader implements CommandLineRunner {
         petService.save(pet);
         ownerService.save(owner);
 
-        final Speciality speciality = new Speciality("Radiolity");
-        specialityService.save(speciality);
-
-        final Vet vet = new Vet("Rick", "Saint", speciality);
+        Speciality speciality = new Speciality("Radiolity");
+        Vet vet = new Vet("Rick", "Saint");
+        vet = vetService.save(vet);
+        vet.getSpecialities().add(speciality);
+        speciality.getVets().add(vet);
+        speciality = specialityService.save(speciality);
+        vet.getSpecialities().add(speciality);
         vetService.save(vet);
         logger.info("Loading data finished!");
     }

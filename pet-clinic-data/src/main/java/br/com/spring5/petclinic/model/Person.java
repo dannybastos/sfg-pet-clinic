@@ -9,19 +9,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.TableGenerator;
 
 /**
  * Created by dannybastos on 01/11/18.
  */
 @Entity
-@TableGenerator(name="TAB_SEQ", initialValue=1, allocationSize=1)
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public abstract class Person implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator="TAB_SEQ")
+    @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
     @Column(length = 100)
     private String firstName;
