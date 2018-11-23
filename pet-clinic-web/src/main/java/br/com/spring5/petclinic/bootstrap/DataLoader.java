@@ -6,20 +6,12 @@ import java.util.Collection;
 
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
+import br.com.spring5.petclinic.model.*;
+import br.com.spring5.petclinic.service.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-
-import br.com.spring5.petclinic.model.Owner;
-import br.com.spring5.petclinic.model.Pet;
-import br.com.spring5.petclinic.model.PetType;
-import br.com.spring5.petclinic.model.Speciality;
-import br.com.spring5.petclinic.model.Vet;
-import br.com.spring5.petclinic.service.OwnerService;
-import br.com.spring5.petclinic.service.PetService;
-import br.com.spring5.petclinic.service.SpecialityService;
-import br.com.spring5.petclinic.service.VetsService;
 
 /**
  * Created by danny on 16/11/18.
@@ -33,15 +25,18 @@ public class DataLoader implements CommandLineRunner {
     final private VetsService vetService;
     final private SpecialityService specialityService;
     final private PetService petService;
+    final private VisitService visitService;
 
     public DataLoader(OwnerService ownerService
             , VetsService vetService
             , SpecialityService specialityService
-            , PetService petService) {
+            , PetService petService
+            , VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.specialityService = specialityService;
         this.petService = petService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -68,7 +63,10 @@ public class DataLoader implements CommandLineRunner {
         speciality.getVets().add(vet);
         speciality = specialityService.save(speciality);
         vet.getSpecialities().add(speciality);
-        vetService.save(vet);
+        vet = vetService.save(vet);
+
+        Visit visit = new Visit(LocalDate.of(2018,Month.NOVEMBER, 22),"description", pet, vet);
+        visitService.save(visit);
         logger.info("Loading data finished!");
     }
 }

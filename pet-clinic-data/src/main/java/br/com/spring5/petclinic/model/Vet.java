@@ -3,10 +3,7 @@ package br.com.spring5.petclinic.model;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 
 /**
  * Created by dannybastos on 01/11/18.
@@ -18,6 +15,9 @@ public class Vet extends Person {
 	@ManyToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="VET_SPECIALITY")
     private Set<Speciality> specialities;
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "vet", cascade = CascadeType.ALL)
+	private Set<Visit> visits;
 
     public Vet() {
     	this.specialities = new HashSet<>();
