@@ -1,10 +1,13 @@
 package br.com.spring5.petclinic.model;
 
+import lombok.*;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.*;
 
+@Data
 @Entity
 public class Visit implements Serializable{
 	private static final long serialVersionUID = -3358724098419861060L;
@@ -21,14 +24,6 @@ public class Visit implements Serializable{
 	@ManyToOne
 	private Pet pet;
 
-	public Vet getVet() {
-		return vet;
-	}
-
-	public void setVet(Vet vet) {
-		this.vet = vet;
-	}
-
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Vet vet;
 
@@ -40,30 +35,5 @@ public class Visit implements Serializable{
 		this.description = description;
 		this.pet = pet;
 		this.vet = vet;
-	}
-	
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public LocalDate getDate() {
-		return date;
-	}
-	public void setDate(LocalDate date) {
-		this.date = date;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	public Pet getPet() {
-		return pet;
-	}
-	public void setPet(Pet pet) {
-		this.pet = pet;
 	}
 }

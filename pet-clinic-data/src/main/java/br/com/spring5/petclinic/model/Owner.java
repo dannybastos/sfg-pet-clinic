@@ -1,5 +1,8 @@
 package br.com.spring5.petclinic.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,6 +14,8 @@ import javax.persistence.OneToMany;
  * Created by dannybastos on 01/11/18.
  */
 @Entity
+@Getter
+@Setter
 public class Owner extends Person {
 	private static final long serialVersionUID = 6951042995564731837L;
 	@Column(name="address", length = 100)
@@ -38,35 +43,4 @@ public class Owner extends Person {
         this.pets = new HashSet<>();
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public Long getTelephone() {
-        return telephone;
-    }
-
-    public void setTelephone(Long telephone) {
-        this.telephone = telephone;
-    }
-
-    public Set<Pet> getPets() {
-        return pets;
-    }
-
-    public void setPets(Set<Pet> pets) {
-        this.pets = pets;
-    }
 }

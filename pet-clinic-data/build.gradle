@@ -13,10 +13,10 @@ buildscript {
 dependencies {
 	compile("org.springframework.data:spring-data-jpa:${springDataVersion}")
     compileOnly("org.projectlombok:lombok:${lombokVersion}")
-    runtimeOnly("com.h2database:h2")
+    runtimeOnly("com.h2database:h2:1.4.197")
 //    runtimeOnly("mysql:mysql-connector-java")
     compile("org.hibernate:hibernate-entitymanager:${hibernateVersion}")
     compile("org.slf4j:slf4j-log4j12:${sfl4jVersion}")
-	testCompile("junit:junit:${junitVersion}")
+    testCompile("junit:junit:${junitVersion}")
 	testCompile("org.springframework:spring-test:${springVersion}")
 }

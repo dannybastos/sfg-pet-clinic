@@ -1,5 +1,8 @@
 package br.com.spring5.petclinic.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 import java.io.Serializable;
@@ -10,6 +13,8 @@ import java.util.Set;
  * Created by dannybastos on 01/11/18.
  */
 @Entity
+@Getter
+@Setter
 public class Pet implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
@@ -41,44 +46,4 @@ public class Pet implements Serializable{
         this.type = type;
         this.owner = owner;
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public LocalDate getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public PetType getType() {
-        return type;
-    }
-
-    public void setType(PetType type) {
-        this.type = type;
-    }
-
-    public Owner getOwner() {
-        return owner;
-    }
-
-    public void setOwner(Owner owner) {
-        this.owner = owner;
-    }
-
-	public Set<Visit> getVisits() {
-		return visits;
-	}
-
-	public void setVisits(Set<Visit> visits) {
-		this.visits = visits;
-	}
 }
