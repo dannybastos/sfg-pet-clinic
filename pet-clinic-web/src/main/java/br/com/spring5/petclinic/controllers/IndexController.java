@@ -9,5 +9,6 @@ public class IndexController {
     @GetMapping({"","/","index.html", "index"})
     public String index(){
         return "index";
+        
     }
 }

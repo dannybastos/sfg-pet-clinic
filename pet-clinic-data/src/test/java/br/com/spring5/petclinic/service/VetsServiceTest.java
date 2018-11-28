@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -17,6 +18,7 @@ import br.com.spring5.petclinic.model.Vet;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes=PetClinicDataConfig.class)
+@ActiveProfiles("map")
 public class VetsServiceTest {
 	
 	private VetsService vetService;
